@@ -219,13 +219,13 @@
             overflow: hidden;
         }
 
-        /* 3D Polyhedron Background - DUAL POLYHEDRONS */
+        /* 3D Polyhedron Background - ENHANCED VISIBILITY */
         .polyhedron-container {
             position: absolute;
             width: 300px;
             height: 300px;
-            perspective: 1000px;
-            opacity: 0.3;
+            perspective: 1200px;
+            opacity: 0.6;
             z-index: 0;
         }
 
@@ -280,8 +280,8 @@
             position: absolute;
             width: 120px;
             height: 120px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.02);
             left: 50%;
             top: 50%;
             transform-origin: center center;
@@ -294,7 +294,8 @@
             height: 150px;
             margin-left: -75px;
             margin-top: -75px;
-            border-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         /* Create geometric structures */
@@ -327,7 +328,7 @@
         /* Enhanced wireframe edges */
         .polyhedron-edge {
             position: absolute;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.4);
             height: 1px;
             transform-origin: left center;
             left: 50%;
@@ -346,11 +347,11 @@
         /* Enhanced vertices */
         .vertex {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.4);
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
             transform: translate(-50%, -50%);
         }
 
@@ -381,11 +382,12 @@
 
         .hero-content {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0;
             padding: 0 50px;
             z-index: 1;
             color: white;
             position: relative;
+            text-align: left;
         }
 
         .hero h1 {
