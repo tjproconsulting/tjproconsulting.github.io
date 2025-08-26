@@ -1027,22 +1027,14 @@
         // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
+            if (navbar && window.scrollY > 50) {
                 navbar.classList.add('scrolled');
-            } else {
+            } else if (navbar) {
                 navbar.classList.remove('scrolled');
             }
         });
 
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Smooth scrolling
+        // Smooth scrolling for any anchor links (if any exist)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1052,8 +1044,6 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu if open
-                    navMenu.classList.remove('active');
                 }
             });
         });
