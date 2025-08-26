@@ -219,150 +219,137 @@
             overflow: hidden;
         }
 
-        /* 3D Polyhedron Background - ENHANCED VISIBILITY */
+        /* Simplified 2D Polyhedron Background - ALWAYS VISIBLE */
         .polyhedron-container {
             position: absolute;
             width: 300px;
             height: 300px;
-            perspective: 1200px;
-            opacity: 0.6;
-            z-index: 0;
+            z-index: 1;
+            opacity: 0.8;
         }
 
         .polyhedron-container.top-right {
-            top: 5%;
-            right: 5%;
-            transform: none;
+            top: 8%;
+            right: 8%;
         }
 
         .polyhedron-container.bottom-right {
-            top: 60%;
-            right: 15%;
-            transform: none;
-            width: 400px;
-            height: 400px;
+            top: 65%;
+            right: 20%;
+            width: 350px;
+            height: 350px;
         }
 
         .polyhedron {
             width: 100%;
             height: 100%;
             position: relative;
-            transform-style: preserve-3d;
+            transform-origin: center center;
         }
 
         .polyhedron.rotate-1 {
-            animation: rotatePolyhedron1 25s linear infinite;
+            animation: spin1 20s linear infinite;
         }
 
         .polyhedron.rotate-2 {
-            animation: rotatePolyhedron2 30s linear infinite reverse;
+            animation: spin2 25s linear infinite reverse;
         }
 
-        @keyframes rotatePolyhedron1 {
-            0% {
-                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-            }
-            100% {
-                transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
-            }
+        @keyframes spin1 {
+            from { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            to { transform: rotate(360deg) scale(1); }
         }
 
-        @keyframes rotatePolyhedron2 {
-            0% {
-                transform: rotateX(45deg) rotateY(0deg) rotateZ(30deg);
-            }
-            100% {
-                transform: rotateX(405deg) rotateY(360deg) rotateZ(390deg);
-            }
+        @keyframes spin2 {
+            from { transform: rotate(45deg) scale(0.9); }
+            50% { transform: rotate(225deg) scale(1.05); }
+            to { transform: rotate(405deg) scale(0.9); }
         }
 
+        /* Simplified geometric wireframe */
         .polyhedron-face {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            background: rgba(255, 255, 255, 0.02);
-            left: 50%;
-            top: 50%;
-            transform-origin: center center;
-            margin-left: -60px;
-            margin-top: -60px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            background: transparent;
         }
 
-        .polyhedron-container.bottom-right .polyhedron-face {
-            width: 150px;
-            height: 150px;
-            margin-left: -75px;
-            margin-top: -75px;
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.03);
+        /* Create hexagonal/octagonal shapes */
+        .face-1 { 
+            width: 80px; 
+            height: 80px; 
+            top: 20%; 
+            left: 35%; 
+            transform: rotate(0deg);
+        }
+        .face-2 { 
+            width: 60px; 
+            height: 60px; 
+            top: 10%; 
+            left: 55%; 
+            transform: rotate(45deg);
+        }
+        .face-3 { 
+            width: 100px; 
+            height: 70px; 
+            top: 35%; 
+            left: 15%; 
+            transform: rotate(30deg);
+        }
+        .face-4 { 
+            width: 90px; 
+            height: 50px; 
+            top: 45%; 
+            left: 60%; 
+            transform: rotate(60deg);
+        }
+        .face-5 { 
+            width: 70px; 
+            height: 70px; 
+            top: 65%; 
+            left: 25%; 
+            transform: rotate(15deg);
+        }
+        .face-6 { 
+            width: 85px; 
+            height: 85px; 
+            top: 55%; 
+            left: 50%; 
+            transform: rotate(75deg);
         }
 
-        /* Create geometric structures */
-        .face-1 { transform: rotateY(0deg) translateZ(80px); }
-        .face-2 { transform: rotateY(60deg) translateZ(80px); }
-        .face-3 { transform: rotateY(120deg) translateZ(80px); }
-        .face-4 { transform: rotateY(180deg) translateZ(80px); }
-        .face-5 { transform: rotateY(240deg) translateZ(80px); }
-        .face-6 { transform: rotateY(300deg) translateZ(80px); }
-        .face-7 { transform: rotateX(90deg) translateZ(80px); }
-        .face-8 { transform: rotateX(-90deg) translateZ(80px); }
-        .face-9 { transform: rotateY(30deg) rotateX(45deg) translateZ(80px); }
-        .face-10 { transform: rotateY(90deg) rotateX(45deg) translateZ(80px); }
-        .face-11 { transform: rotateY(150deg) rotateX(45deg) translateZ(80px); }
-        .face-12 { transform: rotateY(210deg) rotateX(45deg) translateZ(80px); }
-
-        .polyhedron-container.bottom-right .face-1 { transform: rotateY(0deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-2 { transform: rotateY(60deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-3 { transform: rotateY(120deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-4 { transform: rotateY(180deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-5 { transform: rotateY(240deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-6 { transform: rotateY(300deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-7 { transform: rotateX(90deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-8 { transform: rotateX(-90deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-9 { transform: rotateY(30deg) rotateX(45deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-10 { transform: rotateY(90deg) rotateX(45deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-11 { transform: rotateY(150deg) rotateX(45deg) translateZ(100px); }
-        .polyhedron-container.bottom-right .face-12 { transform: rotateY(210deg) rotateX(45deg) translateZ(100px); }
-
-        /* Enhanced wireframe edges */
+        /* Connecting lines between shapes */
         .polyhedron-edge {
             position: absolute;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.5);
             height: 1px;
             transform-origin: left center;
-            left: 50%;
-            top: 50%;
         }
 
-        .edge-1 { width: 100px; transform: rotate(0deg); }
-        .edge-2 { width: 100px; transform: rotate(45deg); }
-        .edge-3 { width: 100px; transform: rotate(90deg); }
-        .edge-4 { width: 100px; transform: rotate(135deg); }
-        .edge-5 { width: 70px; transform: rotate(30deg); }
-        .edge-6 { width: 70px; transform: rotate(60deg); }
-        .edge-7 { width: 70px; transform: rotate(120deg); }
-        .edge-8 { width: 70px; transform: rotate(150deg); }
-        
-        /* Enhanced vertices */
+        .edge-1 { width: 120px; top: 30%; left: 40%; transform: rotate(25deg); }
+        .edge-2 { width: 100px; top: 45%; left: 30%; transform: rotate(-15deg); }
+        .edge-3 { width: 80px; top: 60%; left: 45%; transform: rotate(45deg); }
+        .edge-4 { width: 90px; top: 20%; left: 50%; transform: rotate(70deg); }
+        .edge-5 { width: 110px; top: 40%; left: 20%; transform: rotate(-30deg); }
+
+        /* Corner dots */
         .vertex {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.7);
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
 
-        .vertex-1 { top: 15%; left: 50%; }
-        .vertex-2 { top: 35%; left: 25%; }
-        .vertex-3 { top: 35%; left: 75%; }
-        .vertex-4 { top: 65%; left: 25%; }
-        .vertex-5 { top: 65%; left: 75%; }
-        .vertex-6 { top: 85%; left: 50%; }
-        .vertex-7 { top: 50%; left: 15%; }
-        .vertex-8 { top: 50%; left: 85%; }
+        .vertex-1 { top: 15%; left: 45%; }
+        .vertex-2 { top: 25%; left: 65%; }
+        .vertex-3 { top: 40%; left: 20%; }
+        .vertex-4 { top: 50%; left: 75%; }
+        .vertex-5 { top: 70%; left: 35%; }
+        .vertex-6 { top: 65%; left: 60%; }
+        .vertex-7 { top: 80%; left: 45%; }
+        .vertex-8 { top: 35%; left: 50%; }
 
         .hero-bg {
             position: absolute;
@@ -384,7 +371,7 @@
             max-width: 1400px;
             margin: 0;
             padding: 0 50px;
-            z-index: 1;
+            z-index: 10;
             color: white;
             position: relative;
             text-align: left;
