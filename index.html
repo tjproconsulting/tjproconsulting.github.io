@@ -343,16 +343,41 @@
 
         .hero p {
             font-size: 1.25rem;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.2s both;
             color: var(--accent);
         }
 
+        .hero-bullets {
+            list-style: none;
+            margin: 0 0 40px 0;
+            padding: 0;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-bullets li {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .hero-bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
         .btn-group {
             display: flex;
             gap: 20px;
-            animation: fadeInUp 1s ease 0.4s both;
+            animation: fadeInUp 1s ease 0.5s both;
         }
 
         .btn {
@@ -947,6 +972,12 @@
         <div class="hero-content">
             <h1>Business Intelligence & Process Optimization Strategist</h1>
             <p>Strategic advisor who transforms operational chaos into automated efficiency through investigative data analysis.</p>
+            <ul class="hero-bullets">
+                <li>Investigate beyond symptoms to find root causes</li>
+                <li>Transform 'gut feeling' decisions into data-driven confidence</li>
+                <li>7+ years frontline operational experience + analytical expertise</li>
+                <li>Proven track record: ServiceNow → Power BI transformations, process optimizations</li>
+            </ul>
             <div class="btn-group">
                 <a href="#portfolio" class="btn">View Solutions</a>
                 <a href="#contact" class="btn btn-outline">Get Started</a>
