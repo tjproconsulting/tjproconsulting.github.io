@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<div class="polyhedron-edge edge-6"></div>
+                <div class="polyhedron-edge edge-7"></div>
+                <div class="polyhedron-edge edge-8"></div><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -162,7 +164,7 @@
             }
         }
 
-        /* Navigation - FIXED ALIGNMENT */
+        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
@@ -184,7 +186,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: flex-end;  /* Changed from flex-start to flex-end */
+            justify-content: flex-start;
             align-items: center;
             position: relative;
         }
@@ -637,6 +639,29 @@
             line-height: 1.8;
         }
 
+        .case-bullets {
+            list-style: none;
+            margin-top: 20px;
+            padding: 0;
+        }
+
+        .case-bullets li {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .case-bullets li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
         /* Portfolio Section */
         .portfolio {
             padding: 100px 50px;
@@ -983,55 +1008,24 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
-        <!-- Polyhedron containers -->
-        <div class="polyhedron-container top-right">
-            <div class="polyhedron rotate-1">
-                <div class="polyhedron-face face-1"></div>
-                <div class="polyhedron-face face-2"></div>
-                <div class="polyhedron-face face-3"></div>
-                <div class="polyhedron-face face-4"></div>
-                <div class="polyhedron-face face-5"></div>
-                <div class="polyhedron-face face-6"></div>
-                <div class="polyhedron-edge edge-1"></div>
-                <div class="polyhedron-edge edge-2"></div>
-                <div class="polyhedron-edge edge-3"></div>
-                <div class="polyhedron-edge edge-4"></div>
-                <div class="polyhedron-edge edge-5"></div>
-                <div class="vertex vertex-1"></div>
-                <div class="vertex vertex-2"></div>
-                <div class="vertex vertex-3"></div>
-                <div class="vertex vertex-4"></div>
-                <div class="vertex vertex-5"></div>
-                <div class="vertex vertex-6"></div>
-                <div class="vertex vertex-7"></div>
-                <div class="vertex vertex-8"></div>
+        <!-- Subtle Data Charts Background -->
+        <div class="chart-container top-right">
+            <div class="donut-chart">
+                <div class="chart-ring chart-ring-1"></div>
+                <div class="chart-ring chart-ring-2"></div>
+                <div class="chart-ring chart-ring-3"></div>
+                <div class="chart-center"></div>
             </div>
         </div>
         
-        <div class="polyhedron-container bottom-right">
-            <div class="polyhedron rotate-2">
-                <div class="polyhedron-face face-1"></div>
-                <div class="polyhedron-face face-2"></div>
-                <div class="polyhedron-face face-3"></div>
-                <div class="polyhedron-face face-4"></div>
-                <div class="polyhedron-face face-5"></div>
-                <div class="polyhedron-face face-6"></div>
-                <div class="polyhedron-edge edge-1"></div>
-                <div class="polyhedron-edge edge-2"></div>
-                <div class="polyhedron-edge edge-3"></div>
-                <div class="polyhedron-edge edge-4"></div>
-                <div class="polyhedron-edge edge-5"></div>
-                <div class="vertex vertex-1"></div>
-                <div class="vertex vertex-2"></div>
-                <div class="vertex vertex-3"></div>
-                <div class="vertex vertex-4"></div>
-                <div class="vertex vertex-5"></div>
-                <div class="vertex vertex-6"></div>
-                <div class="vertex vertex-7"></div>
-                <div class="vertex vertex-8"></div>
+        <div class="chart-container bottom-right">
+            <div class="donut-chart rotate-2">
+                <div class="chart-ring chart-ring-1"></div>
+                <div class="chart-ring chart-ring-2"></div>
+                <div class="chart-ring chart-ring-3"></div>
+                <div class="chart-center"></div>
             </div>
         </div>
-        
         <div class="hero-content">
             <h1>Business Intelligence & Process Optimization Strategist</h1>
             <p>Strategic advisor who transforms operational chaos into automated efficiency through investigative data analysis.</p>
@@ -1092,18 +1086,33 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">📊</div>
-                    <h3>The Chatbot Configuration Crisis</h3>
+                    <h3>Manufacturing Efficiency Overhaul</h3>
                     <p>Identified bottlenecks in production line through data analysis, resulting in 40% increase in throughput and $2M annual savings.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🔍</div>
-                    <h3> The Manual Workflow Transformation</h3>
+                    <h3>Customer Service Investigation</h3>
                     <p>Discovered root cause of customer complaints wasn't product quality but communication gaps, leading to 60% reduction in complaints.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">⚡</div>
-                    <h3>The Hidden Tier 1 Inefficiency</h3>
+                    <h3>Financial Reporting Automation</h3>
                     <p>Automated manual reporting processes, reducing monthly close time from 15 days to 3 days while improving accuracy.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Supply Chain Optimization</h3>
+                    <p>Implemented predictive analytics for inventory management, reducing carrying costs by 25% while improving service levels.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚨</div>
+                    <h3>Early Warning Systems</h3>
+                    <p>Built dashboard monitoring key operational metrics, enabling proactive problem resolution and preventing costly downtime.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔄</div>
+                    <h3>Process Standardization</h3>
+                    <p>Standardized workflows across multiple locations, improving consistency and reducing training time for new employees by 50%.</p>
                 </div>
             </div>
         </div>
@@ -1119,6 +1128,11 @@
                 <div class="contact-info">
                     <h3>Why My Approach Works Differently</h3>
                     <p>Most consultants start with solutions. I start with investigation. I combine operational experience with analytical expertise to find root causes, then build systematic solutions that actually work.</p>
+                    <ul class="contact-details">
+                        <li>📧 [Your Email]</li>
+                        <li>📱 [Your LinkedIn Profile]</li>
+                        <li>💼 Available for strategic consulting projects</li>
+                    </ul>
                 </div>
                 <div class="contact-form">
                     <div class="form-group">
@@ -1140,8 +1154,10 @@
     <footer>
         <div class="social-links">
             <a href="#" aria-label="LinkedIn">💼</a>
+            <a href="#" aria-label="Email">📧</a>
+            <a href="#" aria-label="Portfolio">🔗</a>
         </div>
-        <p>&copy; 2025 TJ Pro Consulting. All rights reserved.</p>
+        <p>&copy; 2025 Strategic Business Consulting. All rights reserved.</p>
     </footer>
 
     <script>
