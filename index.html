@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategic Data & Process Automation</title>
+    <title>Studio Creative - Design & Digital Agency</title>
     <style>
         * {
             margin: 0;
@@ -13,9 +13,9 @@
 
         :root {
             --primary: #0a0a0a;
-            --accent: #ffd700;
+            --accent: #ff4444;
             --text-light: #666;
-            --bg-light: #0a0a0a;
+            --bg-light: #f8f8f8;
             --white: #ffffff;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -56,21 +56,23 @@
         }
 
         .loader-words {
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.5rem, 4vw, 3rem);
             font-weight: 300;
             letter-spacing: 2px;
-            line-height: 1;
+            line-height: 1.2;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-bottom: 40px;
+            padding: 0 20px;
         }
 
         .loader-word {
             opacity: 0;
             transform: translateY(100vh);
-            animation: ascendAndStay 2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation: ascendAndStay 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
         }
 
         .loader-word:nth-child(1) {
@@ -78,11 +80,15 @@
         }
 
         .loader-word:nth-child(2) {
-            animation-delay: 2s;
+            animation-delay: 1.5s;
         }
 
         .loader-word:nth-child(3) {
-            animation-delay: 4s;
+            animation-delay: 3s;
+        }
+
+        .loader-word:nth-child(4) {
+            animation-delay: 4.5s;
         }
 
         @keyframes ascendAndStay {
@@ -747,6 +753,17 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .loader-words {
+                font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+                gap: 12px;
+            }
+            
+            .loader-name {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 15px 20px;
@@ -792,6 +809,42 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .loader-words {
+                font-size: clamp(1rem, 3vw, 2rem);
+                gap: 10px;
+            }
+            
+            .loader-name {
+                font-size: clamp(1.2rem, 3.5vw, 2rem);
+                letter-spacing: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .loader-words {
+                font-size: 1.2rem;
+                gap: 8px;
+                max-width: 90%;
+            }
+            
+            .loader-name {
+                font-size: 1.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -801,11 +854,11 @@
         <div class="loader-content">
             <div class="loader-words">
                 <div class="loader-word">INTELLIGENT</div>
-                <div class="loader-word">STRAGTEGIC</div>
+                <div class="loader-word">STRATEGIC</div>
                 <div class="loader-word">PROCESS</div>
-		<div class="loader-word">SOLUTIONS</div>
+                <div class="loader-word">SOLUTIONS</div>
             </div>
-            <div class="loader-name">Strategic Data & Process Automation</div>
+            <div class="loader-name">STUDIO</div>
             <div class="loader-progress"></div>
         </div>
     </div>
@@ -842,26 +895,42 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Studio</h2>
+            </div>
+            <div class="about-grid fade-in">
+                <div class="about-text">
+                    <h3>Passionately Creating Design Wonders</h3>
+                    <p>At our design studio, we are a collective of talented individuals ignited by our unwavering passion for transforming ideas into reality. With a harmonious blend of diverse backgrounds and a vast array of skill sets, we join forces to create compelling solutions for our esteemed clients.</p>
+                    <p>Collaboration is at the heart of what we do. Our team thrives on the synergy that arises when unique perspectives converge, fostering an environment of boundless creativity. By harnessing our collective expertise, we produce extraordinary results that consistently surpass expectations.</p>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Team collaboration">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>PROVEN SOLUTIONS THAT WORK</h2>
+                <h2>What We Do</h2>
             </div>
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">🎨</div>
-                    <h3>Business Problem Investigation</h3>
-                    <p>What I Do: "Investigate operational pain points to find real root causes"
-Mini Case Study: "Client thought volume was increasing randomly - discovered new chatbot routing issues were creating unnecessary tickets"
-Outcome: "Fixed the real problem, not the symptom".</p>
+                    <h3>Brand Design</h3>
+                    <p>Creating unique brand identities that resonate with your audience and communicate your values effectively through visual storytelling.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">💻</div>
-                    <h3>Strategic Data & Reporting</h3>
-                    <p>What I Do: "Transform data-blind organizations into data-driven decision makers"
-Mini Case Study: "Organization had zero reporting - built ServiceNow → Power BI pipeline enabling strategic staffing decisions"
-Outcome: "From gut feelings to confident strategic planning".</p>
+                    <h3>Web Development</h3>
+                    <p>Building responsive, fast, and user-friendly websites that deliver exceptional digital experiences across all devices and platforms.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">📱</div>
@@ -870,37 +939,90 @@ Outcome: "From gut feelings to confident strategic planning".</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">📈</div>
-                    <h3>Process Automation & Optimization</h3>
-                    <p>What I Do: "Eliminate work that shouldn't exist through systematic automation"
-Mini Case Study: "Analyzed escalation patterns, identified process gaps, automated tier-1 solutions"
-Outcome: "Reduced escalations, faster resolution times".</p>
+                    <h3>Digital Strategy</h3>
+                    <p>Developing comprehensive digital strategies that align with your business goals and maximize your online presence and impact.</p>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">📸</div>
-                    <h3>Operational Intelligence Systems</h3>
-                    <p>What I Do: "Build early warning systems so you see problems before they become expensive"
-Mini Case Study: "Created dashboards highlighting problem areas for proactive management"
-Outcome: "Prevention instead of reaction".</p>
+                    <h3>Content Creation</h3>
+                    <p>Producing compelling visual and written content that tells your story and engages your audience across all digital channels.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3>Marketing</h3>
+                    <p>Implementing data-driven marketing campaigns that increase visibility, generate leads, and drive sustainable business growth.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Our Work</h2>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <h3>Modern Architecture</h3>
+                        <p>Architectural visualization and branding</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <h3>Data Analytics Platform</h3>
+                        <p>UI/UX Design and Development</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop" alt="Project 3">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Solution</h3>
+                        <p>Full-stack development and design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=400&h=300&fit=crop" alt="Project 4">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Identity</h3>
+                        <p>Brand design and strategy</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Project 5">
+                    <div class="portfolio-overlay">
+                        <h3>Financial Dashboard</h3>
+                        <p>Data visualization and UX design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop" alt="Project 6">
+                    <div class="portfolio-overlay">
+                        <h3>Tech Startup Website</h3>
+                        <p>Web development and branding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header fade-in">
-                <h2>GET RESULTS</h2>
+                <h2>Let's Connect</h2>
             </div>
             <div class="contact-content fade-in">
                 <div class="contact-info">
-                    <h3>Why My Approach Works Differently</h3>
-                    <p>"Most consultants start with solutions. I start with investigation.
-My 7+ years in frontline IT operations taught me that what people complain about isn't always the real problem. When stakeholders said 'volume is increasing,' I dug into the data and found chatbot routing issues. When they wanted 'better reporting,' I discovered they needed strategic decision-making frameworks.
-I combine operational experience with analytical expertise to find root causes, then build systematic solutions that actually work.".</p>
+                    <h3>Start Your Project</h3>
+                    <p>Ready to bring your ideas to life? We'd love to hear about your project and explore how we can help you achieve your goals.</p>
                     <ul class="contact-details">
-                        <li>📧 [Email Here]</li>
-                        <li>📧 [LinkedIn Profile</li>
+                        <li>📍 123 Creative Street, Design City, DC 10001</li>
+                        <li>📧 hello@studiocreative.com</li>
+                        <li>📱 +1 (555) 123-4567</li>
                     </ul>
                 </div>
                 <div class="contact-form">
@@ -911,9 +1033,9 @@ I combine operational experience with analytical expertise to find root causes, 
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Tell us about your project. What operational challenge is frustrating you most? What have you tried that didn't work?" required></textarea>
+                        <textarea placeholder="Tell us about your project" required></textarea>
                     </div>
-                    <button class="btn" onclick="handleSubmit(event)">Submit</button>
+                    <button class="btn" onclick="handleSubmit(event)">Send Message</button>
                 </div>
             </div>
         </div>
