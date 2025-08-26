@@ -219,17 +219,28 @@
             overflow: hidden;
         }
 
-        /* 3D Polyhedron Background - ENHANCED */
+        /* 3D Polyhedron Background - DUAL POLYHEDRONS */
         .polyhedron-container {
             position: absolute;
-            top: 50%;
-            right: 10%;
-            transform: translate(0, -50%);
-            width: 500px;
-            height: 500px;
+            width: 300px;
+            height: 300px;
             perspective: 1000px;
-            opacity: 0.4;
+            opacity: 0.3;
             z-index: 0;
+        }
+
+        .polyhedron-container.top-right {
+            top: 5%;
+            right: 5%;
+            transform: none;
+        }
+
+        .polyhedron-container.bottom-right {
+            top: 60%;
+            right: 15%;
+            transform: none;
+            width: 400px;
+            height: 400px;
         }
 
         .polyhedron {
@@ -237,10 +248,17 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: rotatePolyhedron 30s linear infinite;
         }
 
-        @keyframes rotatePolyhedron {
+        .polyhedron.rotate-1 {
+            animation: rotatePolyhedron1 25s linear infinite;
+        }
+
+        .polyhedron.rotate-2 {
+            animation: rotatePolyhedron2 30s linear infinite reverse;
+        }
+
+        @keyframes rotatePolyhedron1 {
             0% {
                 transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
             }
@@ -249,68 +267,98 @@
             }
         }
 
+        @keyframes rotatePolyhedron2 {
+            0% {
+                transform: rotateX(45deg) rotateY(0deg) rotateZ(30deg);
+            }
+            100% {
+                transform: rotateX(405deg) rotateY(360deg) rotateZ(390deg);
+            }
+        }
+
         .polyhedron-face {
             position: absolute;
-            width: 150px;
-            height: 150px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
             background: transparent;
             left: 50%;
             top: 50%;
             transform-origin: center center;
-            margin-left: -75px;
-            margin-top: -75px;
+            margin-left: -60px;
+            margin-top: -60px;
         }
 
-        /* Create a more complex geometric structure like the reference image */
-        .face-1 { transform: rotateY(0deg) translateZ(120px); }
-        .face-2 { transform: rotateY(60deg) translateZ(120px); }
-        .face-3 { transform: rotateY(120deg) translateZ(120px); }
-        .face-4 { transform: rotateY(180deg) translateZ(120px); }
-        .face-5 { transform: rotateY(240deg) translateZ(120px); }
-        .face-6 { transform: rotateY(300deg) translateZ(120px); }
-        .face-7 { transform: rotateX(90deg) translateZ(120px); }
-        .face-8 { transform: rotateX(-90deg) translateZ(120px); }
-        .face-9 { transform: rotateY(30deg) rotateX(60deg) translateZ(120px); }
-        .face-10 { transform: rotateY(90deg) rotateX(60deg) translateZ(120px); }
-        .face-11 { transform: rotateY(150deg) rotateX(60deg) translateZ(120px); }
-        .face-12 { transform: rotateY(210deg) rotateX(60deg) translateZ(120px); }
+        .polyhedron-container.bottom-right .polyhedron-face {
+            width: 150px;
+            height: 150px;
+            margin-left: -75px;
+            margin-top: -75px;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Create geometric structures */
+        .face-1 { transform: rotateY(0deg) translateZ(80px); }
+        .face-2 { transform: rotateY(60deg) translateZ(80px); }
+        .face-3 { transform: rotateY(120deg) translateZ(80px); }
+        .face-4 { transform: rotateY(180deg) translateZ(80px); }
+        .face-5 { transform: rotateY(240deg) translateZ(80px); }
+        .face-6 { transform: rotateY(300deg) translateZ(80px); }
+        .face-7 { transform: rotateX(90deg) translateZ(80px); }
+        .face-8 { transform: rotateX(-90deg) translateZ(80px); }
+        .face-9 { transform: rotateY(30deg) rotateX(45deg) translateZ(80px); }
+        .face-10 { transform: rotateY(90deg) rotateX(45deg) translateZ(80px); }
+        .face-11 { transform: rotateY(150deg) rotateX(45deg) translateZ(80px); }
+        .face-12 { transform: rotateY(210deg) rotateX(45deg) translateZ(80px); }
+
+        .polyhedron-container.bottom-right .face-1 { transform: rotateY(0deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-2 { transform: rotateY(60deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-3 { transform: rotateY(120deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-4 { transform: rotateY(180deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-5 { transform: rotateY(240deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-6 { transform: rotateY(300deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-7 { transform: rotateX(90deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-8 { transform: rotateX(-90deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-9 { transform: rotateY(30deg) rotateX(45deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-10 { transform: rotateY(90deg) rotateX(45deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-11 { transform: rotateY(150deg) rotateX(45deg) translateZ(100px); }
+        .polyhedron-container.bottom-right .face-12 { transform: rotateY(210deg) rotateX(45deg) translateZ(100px); }
 
         /* Enhanced wireframe edges */
         .polyhedron-edge {
             position: absolute;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
             height: 1px;
             transform-origin: left center;
             left: 50%;
             top: 50%;
         }
 
-        .edge-1 { width: 150px; transform: rotate(0deg); }
-        .edge-2 { width: 150px; transform: rotate(45deg); }
-        .edge-3 { width: 150px; transform: rotate(90deg); }
-        .edge-4 { width: 150px; transform: rotate(135deg); }
-        .edge-5 { width: 106px; transform: rotate(30deg); }
-        .edge-6 { width: 106px; transform: rotate(60deg); }
-        .edge-7 { width: 106px; transform: rotate(120deg); }
-        .edge-8 { width: 106px; transform: rotate(150deg); }
+        .edge-1 { width: 100px; transform: rotate(0deg); }
+        .edge-2 { width: 100px; transform: rotate(45deg); }
+        .edge-3 { width: 100px; transform: rotate(90deg); }
+        .edge-4 { width: 100px; transform: rotate(135deg); }
+        .edge-5 { width: 70px; transform: rotate(30deg); }
+        .edge-6 { width: 70px; transform: rotate(60deg); }
+        .edge-7 { width: 70px; transform: rotate(120deg); }
+        .edge-8 { width: 70px; transform: rotate(150deg); }
         
         /* Enhanced vertices */
         .vertex {
             position: absolute;
-            width: 3px;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.6);
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
             transform: translate(-50%, -50%);
         }
 
         .vertex-1 { top: 15%; left: 50%; }
-        .vertex-2 { top: 35%; left: 20%; }
-        .vertex-3 { top: 35%; left: 80%; }
-        .vertex-4 { top: 65%; left: 20%; }
-        .vertex-5 { top: 65%; left: 80%; }
+        .vertex-2 { top: 35%; left: 25%; }
+        .vertex-3 { top: 35%; left: 75%; }
+        .vertex-4 { top: 65%; left: 25%; }
+        .vertex-5 { top: 65%; left: 75%; }
         .vertex-6 { top: 85%; left: 50%; }
         .vertex-7 { top: 50%; left: 15%; }
         .vertex-8 { top: 50%; left: 85%; }
