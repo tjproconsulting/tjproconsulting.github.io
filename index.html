@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<div class="polyhedron-edge edge-6"></div>
+                <div class="polyhedron-edge edge-7"></div>
+                <div class="polyhedron-edge edge-8"></div><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -184,7 +186,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             position: relative;
         }
@@ -217,16 +219,16 @@
             overflow: hidden;
         }
 
-        /* 3D Polyhedron Background - FIXED */
+        /* 3D Polyhedron Background - ENHANCED */
         .polyhedron-container {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            right: 10%;
+            transform: translate(0, -50%);
+            width: 500px;
+            height: 500px;
             perspective: 1000px;
-            opacity: 0.15;
+            opacity: 0.4;
             z-index: 0;
         }
 
@@ -235,7 +237,7 @@
             height: 100%;
             position: relative;
             transform-style: preserve-3d;
-            animation: rotatePolyhedron 20s linear infinite;
+            animation: rotatePolyhedron 30s linear infinite;
         }
 
         @keyframes rotatePolyhedron {
@@ -249,63 +251,69 @@
 
         .polyhedron-face {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            background: rgba(255, 215, 0, 0.05);
+            width: 150px;
+            height: 150px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
             left: 50%;
             top: 50%;
             transform-origin: center center;
-            margin-left: -100px;
-            margin-top: -100px;
+            margin-left: -75px;
+            margin-top: -75px;
         }
 
-        /* Create an icosahedron-like structure - FIXED positioning */
-        .face-1 { transform: rotateY(0deg) translateZ(100px); }
-        .face-2 { transform: rotateY(72deg) translateZ(100px); }
-        .face-3 { transform: rotateY(144deg) translateZ(100px); }
-        .face-4 { transform: rotateY(216deg) translateZ(100px); }
-        .face-5 { transform: rotateY(288deg) translateZ(100px); }
-        .face-6 { transform: rotateX(90deg) translateZ(100px); }
-        .face-7 { transform: rotateX(-90deg) translateZ(100px); }
-        .face-8 { transform: rotateY(36deg) rotateX(45deg) translateZ(100px); }
-        .face-9 { transform: rotateY(108deg) rotateX(45deg) translateZ(100px); }
-        .face-10 { transform: rotateY(180deg) rotateX(45deg) translateZ(100px); }
-        .face-11 { transform: rotateY(252deg) rotateX(45deg) translateZ(100px); }
-        .face-12 { transform: rotateY(324deg) rotateX(45deg) translateZ(100px); }
+        /* Create a more complex geometric structure like the reference image */
+        .face-1 { transform: rotateY(0deg) translateZ(120px); }
+        .face-2 { transform: rotateY(60deg) translateZ(120px); }
+        .face-3 { transform: rotateY(120deg) translateZ(120px); }
+        .face-4 { transform: rotateY(180deg) translateZ(120px); }
+        .face-5 { transform: rotateY(240deg) translateZ(120px); }
+        .face-6 { transform: rotateY(300deg) translateZ(120px); }
+        .face-7 { transform: rotateX(90deg) translateZ(120px); }
+        .face-8 { transform: rotateX(-90deg) translateZ(120px); }
+        .face-9 { transform: rotateY(30deg) rotateX(60deg) translateZ(120px); }
+        .face-10 { transform: rotateY(90deg) rotateX(60deg) translateZ(120px); }
+        .face-11 { transform: rotateY(150deg) rotateX(60deg) translateZ(120px); }
+        .face-12 { transform: rotateY(210deg) rotateX(60deg) translateZ(120px); }
 
-        /* Wireframe edges - IMPROVED */
+        /* Enhanced wireframe edges */
         .polyhedron-edge {
             position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+            background: rgba(255, 255, 255, 0.3);
             height: 1px;
             transform-origin: left center;
             left: 50%;
             top: 50%;
         }
 
-        .edge-1 { width: 141px; transform: rotate(0deg); }
-        .edge-2 { width: 141px; transform: rotate(72deg); }
-        .edge-3 { width: 141px; transform: rotate(144deg); }
-        .edge-4 { width: 141px; transform: rotate(216deg); }
-        .edge-5 { width: 141px; transform: rotate(288deg); }
+        .edge-1 { width: 150px; transform: rotate(0deg); }
+        .edge-2 { width: 150px; transform: rotate(45deg); }
+        .edge-3 { width: 150px; transform: rotate(90deg); }
+        .edge-4 { width: 150px; transform: rotate(135deg); }
+        .edge-5 { width: 106px; transform: rotate(30deg); }
+        .edge-6 { width: 106px; transform: rotate(60deg); }
+        .edge-7 { width: 106px; transform: rotate(120deg); }
+        .edge-8 { width: 106px; transform: rotate(150deg); }
         
-        /* Vertices (corner points) - IMPROVED */
+        /* Enhanced vertices */
         .vertex {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(255, 215, 0, 0.6);
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
             transform: translate(-50%, -50%);
         }
 
-        .vertex-1 { top: 20%; left: 50%; }
-        .vertex-2 { top: 50%; left: 15%; }
-        .vertex-3 { top: 50%; left: 85%; }
-        .vertex-4 { top: 80%; left: 35%; }
-        .vertex-5 { top: 80%; left: 65%; }
+        .vertex-1 { top: 15%; left: 50%; }
+        .vertex-2 { top: 35%; left: 20%; }
+        .vertex-3 { top: 35%; left: 80%; }
+        .vertex-4 { top: 65%; left: 20%; }
+        .vertex-5 { top: 65%; left: 80%; }
+        .vertex-6 { top: 85%; left: 50%; }
+        .vertex-7 { top: 50%; left: 15%; }
+        .vertex-8 { top: 50%; left: 85%; }
 
         .hero-bg {
             position: absolute;
@@ -967,6 +975,9 @@
                 <div class="vertex vertex-3"></div>
                 <div class="vertex vertex-4"></div>
                 <div class="vertex vertex-5"></div>
+                <div class="vertex vertex-6"></div>
+                <div class="vertex vertex-7"></div>
+                <div class="vertex vertex-8"></div>
             </div>
         </div>
         <div class="hero-content">
@@ -978,10 +989,6 @@
                 <li>7+ years frontline operational experience + analytical expertise</li>
                 <li>Proven track record: ServiceNow → Power BI transformations, process optimizations</li>
             </ul>
-            <div class="btn-group">
-                <a href="#portfolio" class="btn">View Solutions</a>
-                <a href="#contact" class="btn btn-outline">Get Started</a>
-            </div>
         </div>
     </section>
     
