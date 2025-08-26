@@ -65,14 +65,16 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
             padding: 0 20px;
+            color: var(--accent);
         }
 
         .loader-word {
             opacity: 0;
             transform: translateY(100vh);
             animation: ascendAndStay 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            color: var(--accent);
         }
 
         .loader-word:nth-child(1) {
@@ -150,14 +152,16 @@
         }
 
         .loader-progress {
-            width: 150px;
-            height: 1px;
-            background: rgba(212, 175, 55, 0.1);
-            margin: 60px auto 0;
-            position: relative;
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 2px;
+            background: rgba(212, 175, 55, 0.2);
             overflow: hidden;
             opacity: 0;
-            animation: fadeIn 0.5s 6.7s forwards;
+            animation: fadeIn 0.5s 0s forwards;
         }
 
         @keyframes fadeIn {
@@ -172,7 +176,7 @@
             height: 100%;
             width: 100%;
             background: var(--accent);
-            animation: loadProgress 1.5s ease-in-out 6.7s forwards;
+            animation: loadProgress 6s ease-in-out 0s forwards;
         }
 
         @keyframes loadProgress {
@@ -188,81 +192,42 @@
             top: 0;
             z-index: 1000;
             padding: 20px 50px;
-            background: rgba(255, 255, 255, 0);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             transition: var(--transition);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         nav.scrolled {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
         }
 
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .logo:hover {
-            color: var(--accent);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            transition: var(--transition);
             position: relative;
         }
 
-        .nav-menu a:hover {
-            color: var(--accent);
-        }
-
-        .nav-menu a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover:after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
             cursor: pointer;
+            transition: var(--transition);
+            color: var(--white);
+            text-align: center;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .menu-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: var(--transition);
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         /* Hero Section */
@@ -271,7 +236,7 @@
             display: flex;
             align-items: center;
             position: relative;
-            background: var(--dark-gradient);
+            background: var(--primary);
             overflow: hidden;
         }
 
@@ -281,9 +246,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.1;
+            opacity: 0.05;
             background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--accent) 35px, var(--accent) 70px);
+                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--accent) 35px, var(--accent) 36px);
             animation: slide 20s linear infinite;
         }
 
@@ -305,6 +270,7 @@
             line-height: 1.1;
             margin-bottom: 20px;
             animation: fadeInUp 1s ease;
+            color: var(--white);
         }
 
         .hero p {
@@ -312,6 +278,7 @@
             margin-bottom: 40px;
             opacity: 0.9;
             animation: fadeInUp 1s ease 0.2s both;
+            color: var(--accent);
         }
 
         .btn-group {
@@ -369,7 +336,7 @@
         /* About Section */
         .about {
             padding: 100px 50px;
-            background: var(--white);
+            background: var(--primary);
         }
 
         .container {
@@ -387,6 +354,7 @@
             margin-bottom: 20px;
             position: relative;
             display: inline-block;
+            color: var(--white);
         }
 
         .section-header h2:after {
@@ -410,10 +378,11 @@
         .about-text h3 {
             font-size: 2rem;
             margin-bottom: 20px;
+            color: var(--white);
         }
 
         .about-text p {
-            color: var(--text-light);
+            color: var(--accent);
             line-height: 1.8;
             margin-bottom: 20px;
         }
@@ -440,7 +409,7 @@
         /* Services Section */
         .services {
             padding: 100px 50px;
-            background: var(--bg-light);
+            background: var(--primary);
         }
 
         .services-grid {
@@ -451,17 +420,19 @@
         }
 
         .service-card {
-            background: var(--white);
+            background: rgba(212, 175, 55, 0.05);
             padding: 40px;
             border-radius: 20px;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.08);
         }
 
         .service-card:before {
@@ -515,17 +486,18 @@
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
+            color: var(--white);
         }
 
         .service-card p {
-            color: var(--text-light);
+            color: var(--accent);
             line-height: 1.8;
         }
 
         /* Portfolio Section */
         .portfolio {
             padding: 100px 50px;
-            background: var(--white);
+            background: var(--primary);
         }
 
         .portfolio-grid {
@@ -595,10 +567,11 @@
         /* Contact Section */
         .contact {
             padding: 100px 50px;
-            background: var(--dark-gradient);
+            background: var(--primary);
             color: white;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .contact::before {
@@ -632,16 +605,19 @@
         .contact-info h3 {
             font-size: 1.5rem;
             margin-bottom: 20px;
+            color: var(--white);
         }
 
         .contact-info p {
             opacity: 0.9;
             line-height: 1.8;
             margin-bottom: 30px;
+            color: var(--accent);
         }
 
         .contact-details {
             list-style: none;
+            color: var(--accent);
         }
 
         .contact-details li {
@@ -866,19 +842,7 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">Studio.</div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="logo">STRATEGIC DATA & PROCESS</div>
         </div>
     </nav>
 
