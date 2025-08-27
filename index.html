@@ -162,7 +162,7 @@
             }
         }
 
-        /* Navigation - FIXED ALIGNMENT */
+        /* Navigation */
         nav {
             position: fixed;
             width: 100%;
@@ -184,7 +184,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: flex-start;  /* Changed from flex-start to flex-end */
+            justify-content: flex-start;
             align-items: center;
             position: relative;
         }
@@ -207,7 +207,7 @@
             transform: scale(1.05);
         }
 
-        /* Hero Section */
+        /* Hero Section - FIXED ALIGNMENT */
         .hero {
             height: 100vh;
             display: flex;
@@ -233,15 +233,15 @@
             to { transform: translateX(70px); }
         }
 
+        /* FIXED: Hero content alignment */
         .hero-content {
             max-width: 1400px;
-            margin: 0;
+            margin: 0 auto;
             padding: 0 50px;
             z-index: 10;
             color: white;
             position: relative;
-            text-align: left;
-            width: 50%;
+            width: 100%;
         }
 
         .hero h1 {
@@ -749,12 +749,15 @@
             .loader-name {
                 font-size: clamp(1.5rem, 4vw, 2.5rem);
             }
-
         }
 
         @media (max-width: 768px) {
             nav {
                 padding: 15px 20px;
+            }
+
+            .hero-content {
+                padding: 0 20px;
             }
 
             .hero h1 {
@@ -787,9 +790,8 @@
                 font-size: clamp(1.2rem, 3.5vw, 2rem);
                 letter-spacing: 5px;
             }
-
         }
-  </style>
+    </style>
 </head>
 <body>
     <!-- Loader -->
@@ -879,35 +881,35 @@
                 <div class="service-card fade-in">
                     <div class="service-icon">📊</div>
                     <h3>The Chatbot Configuration Crisis</h3>
-                    <p>Client was losing $300,000+ annually due to a misconfigured chatbot routing system.</p>\
+                    <p>Client was losing $300,000+ annually due to a misconfigured chatbot routing system.</p>
                     <ul class="hero-bullets">
-                <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
-                <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
-                <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $300K annually</li>
-                <li>Key Insight: Most organizations implement new systems without validating the end-to-end process flow</li>
-            </ul>
+                        <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
+                        <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
+                        <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $300K annually</li>
+                        <li>Key Insight: Most organizations implement new systems without validating the end-to-end process flow</li>
+                    </ul>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">🔍</div>
-                    <h3> The Manual Workflow Transformation</h3>
-                    <p>Discovered client team spending 20+ hours weekly on tasks that could run automatically.</p>\
+                    <h3>The Manual Workflow Transformation</h3>
+                    <p>Discovered client team spending 20+ hours weekly on tasks that could run automatically.</p>
                     <ul class="hero-bullets">
-                <li>Challenge: Multiple manual processes with no documentation or optimization</li>
-                <li>Process: Identified process gaps, built Power Automate workflows with AI integration</li>
-                <li>Results: Scaled QA coverage from 2% to 88% across IT departments, eliminated manual bottlenecks</li>
-                <li>Key Insight: Manual workarounds often indicate missing or broken processes</li>
-            </ul>
+                        <li>Challenge: Multiple manual processes with no documentation or optimization</li>
+                        <li>Process: Identified process gaps, built Power Automate workflows with AI integration</li>
+                        <li>Results: Scaled QA coverage from 2% to 88% across IT departments, eliminated manual bottlenecks</li>
+                        <li>Key Insight: Manual workarounds often indicate missing or broken processes</li>
+                    </ul>
                 </div>
                 <div class="service-card fade-in">
                     <div class="service-icon">⚡</div>
                     <h3>The Hidden Tier 1 Inefficiency</h3>
-                    <p>Found client routing $X in unnecessary tickets to wrong department daily.</p>\
+                    <p>Found client routing $X in unnecessary tickets to wrong department daily.</p>
                     <ul class="hero-bullets">
-                <li>Challenge: Tickets flowing to tier 1 that didn't require their expertise</li>
-                <li>Process: Data analysis revealed routing patterns, tested alternative workflows</li>
-                <li>Results: Redirected tickets to appropriate teams, reduced tier 1 workload by X hours/week</li>
-                <li>Key Insight: Ticket routing inefficiencies compound quickly into significant cost drains</li>
-            </ul>
+                        <li>Challenge: Tickets flowing to tier 1 that didn't require their expertise</li>
+                        <li>Process: Data analysis revealed routing patterns, tested alternative workflows</li>
+                        <li>Results: Redirected tickets to appropriate teams, reduced tier 1 workload by X hours/week</li>
+                        <li>Key Insight: Ticket routing inefficiencies compound quickly into significant cost drains</li>
+                    </ul>
                 </div>
             </div>
         </div>
