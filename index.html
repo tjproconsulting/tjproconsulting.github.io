@@ -196,10 +196,10 @@
         }
 
         .logo img {
-            height: 35px; 
+            height: 35px; /* Adjust this to fit your nav bar perfectly */
             width: auto;
-            max-height: 35px; 
-            object-fit: contain; 
+            max-height: 35px; /* Prevents image from getting too tall */
+            object-fit: contain; /* Maintains aspect ratio */
             transition: var(--transition);
         }
 
@@ -207,7 +207,15 @@
             transform: scale(1.05);
         }
 
-        /* Hero Section - FIXED FOR MOBILE */
+        /* Responsive logo sizing */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 30px;
+                max-height: 30px;
+            }
+        }
+
+        /* Hero Section - FIXED ALIGNMENT */
         .hero {
             height: 100vh;
             display: flex;
@@ -215,7 +223,6 @@
             position: relative;
             background: var(--primary);
             overflow: hidden;
-            /* Add padding to account for fixed nav */
             padding-top: 80px;
         }
 
@@ -235,6 +242,7 @@
             to { transform: translateX(70px); }
         }
 
+        /* FIXED: Hero content alignment */
         .hero-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -849,25 +857,12 @@
                 padding: 15px 20px;
             }
 
-            /* Increase hero padding on mobile to account for nav */
-            .hero {
-                padding-top: 100px;
-            }
-
             .hero-content {
                 padding: 0 20px;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .hero-bullets li {
-                font-size: 1rem;
             }
 
             .btn-group {
@@ -895,23 +890,6 @@
             .loader-name {
                 font-size: clamp(1.2rem, 3.5vw, 2rem);
                 letter-spacing: 5px;
-            }
-
-            /* Responsive logo sizing */
-            .logo img {
-                height: 30px;
-                max-height: 30px;
-            }
-        }
-
-        /* Additional mobile fixes for very small screens */
-        @media (max-width: 480px) {
-            .hero {
-                padding-top: 120px;
-            }
-            
-            .hero-content {
-                padding: 0 15px;
             }
         }
     </style>
@@ -1001,3 +979,215 @@
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Case Studies</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3>The Chatbot Configuration Crisis</h3>
+                    <p>Client was losing $300,000+ annually due to a misconfigured chatbot routing system.</p>\
+                    <ul class="hero-bullets">
+                        <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
+                        <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
+                        <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $300K annually</li>
+                        <li>Key Insight: Most organizations implement new systems without validating the end-to-end process flow</li>
+                    </ul>
+                    <div class="case-study-links">
+                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                            📊 View Analysis Report
+                        </a>
+                        <a href="#" class="case-study-link" onclick="openModal('modal2')">
+                            📈 Before/After Metrics
+                        </a>
+                </div>
+            </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📈</div>
+                    <h3>Transformative Reporting Evolution</h3>
+                    <p>Client had zero visibility into operational performance - decisions made on gut feeling alone.</p>\
+                    <ul class="hero-bullets">
+                        <li>Challenge: Organization operating blind with no systematic reporting or data analysis capabilities</li>
+                        <li>Process: Applied Process Validation Framework - assessed data sources, mapped reporting needs, implemented progressive solution from Excel to ServiceNow to near real-time Power BI dashboards</li>
+                        <li>Results: Transformed decision-making from guesswork to data-driven insights, enabled proactive issue identification, reduced response time to operational problems by 75%</li>
+                        <li>Key Insight: Organizations without reporting systems can't identify problems until they become crises</li>
+                    </ul>
+                    <div class="case-study-links">
+                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                            📊 View Analysis Report
+                        </a>
+                        <a href="#" class="case-study-link" onclick="openModal('modal2')">
+                            📈 Before/After Metrics
+                        </a>
+                </div>
+            </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🧠</div>
+                    <h3>From Tribal Knowledge to Structured Repository</h3>
+                    <p>Client's critical processes existed only in employees' heads - creating massive risk and inefficiency.</p>\
+                    <ul class="hero-bullets">
+                        <li>Challenge: No documentation, knowledge walking out the door with departing employees, new hires taking months to become productive</li>
+                        <li>Process: Applied Process Validation Framework - identified knowledge gaps, interviewed subject matter experts, built templated knowledge repositories with management best practices</li>
+                        <li>Results: Reduced new employee onboarding time by 60%, eliminated knowledge loss risk, created searchable process library with 500+ documented procedures</li>
+                        <li>Key Insight: Undocumented processes are unsustainable processes - and expensive ones</li>
+                    </ul>
+                    <div class="case-study-links">
+                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                            📊 View Analysis Report
+                        </a>
+                        <a href="#" class="case-study-link" onclick="openModal('modal2')">
+                            📈 Before/After Metrics
+                        </a>
+                </div>
+            </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔄</div>
+                    <h3>Continuous Improvement Visibility System</h3>
+                    <p>Client had improvement initiatives scattered across departments with no oversight or progress tracking.</p>\
+                    <ul class="hero-bullets">
+                        <li>Challenge: Multiple improvement efforts happening in silos, no visibility into ROI or completion status, business reviews based on anecdotal updates</li>
+                        <li>Process: Applied Process Validation Framework - mapped existing initiatives, built centralized tracking system with dashboard for real-time visibility into continuous improvement efforts</li>
+                        <li>Results: Consolidated 15+ scattered initiatives into unified tracking system, enabled data-driven business reviews, increased project completion rate by 40%</li>
+                        <li>Key Insight: You can't manage what you can't measure - especially improvement initiatives</li>
+                    </ul>
+                    <div class="case-study-links">
+                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                            📊 View Analysis Report
+                        </a>
+                        <a href="#" class="case-study-link" onclick="openModal('modal2')">
+                            📈 Before/After Metrics
+                        </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Get Results</h2>
+            </div>
+            <div class="contact-content fade-in">
+                <div class="contact-info">
+                    <h3>Why My Approach Works Differently</h3>
+                    <p>Most consultants start with solutions. I start with investigation. I combine operational experience with analytical expertise to find root causes, then build systematic solutions that actually work.</p>
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell us about your challenges. What operational challenge is frustrating you most? What have you tried that didn't work?" required></textarea>
+                    </div>
+                    <button class="btn" onclick="handleSubmit(event)">Get Strategic Assessment</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+        <p>&copy; 2025 TJ Pro Consulting. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 9500); // Total time for complete animation sequence
+        });
+
+        // Navigation scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (navbar && window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else if (navbar) {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            // Reset form
+            document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(field => {
+                field.value = '';
+            });
+        }
+
+        // Parallax effect for hero section (subtle)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const polyhedron = document.querySelector('.polyhedron-container');
+            
+            if (hero && scrolled < window.innerHeight) {
+                // Subtle parallax for hero background
+                hero.querySelector('.hero-bg').style.transform = `translateY(${scrolled * 0.5}px)`;
+                
+                // Move polyhedron slightly with scroll
+                if (polyhedron) {
+                    polyhedron.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.2}px)`;
+                }
+            }
+        });
+
+        // Add hover effect to portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add staggered animation to service cards
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+    </script>
+</body>
+</html>
