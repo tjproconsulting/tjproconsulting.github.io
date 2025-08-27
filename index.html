@@ -269,6 +269,31 @@
             animation: fadeInUp 1s ease 0.3s both;
         }
 
+        .case-study-bullets {
+            list-style: none;
+            margin: 20px 0 40px 0;
+            padding: 0;
+        }
+
+        .case-study-bullets li {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .case-study-bullets li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+
         .hero-bullets li {
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.1rem;
@@ -969,7 +994,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Business Intelligence & Process Optimization Strategist</h1>
-            <p>Strategic advisor who transforms operational chaos into automated efficiency through investigative data analysis.</p>
+            <p>Strategic advisor who leverages years of frontline operational experience to spot inefficiencies others miss, transforming operational chaos into automated efficiency through investigative data analysis.</p>
             <ul class="hero-bullets">
                 <li>Investigate beyond symptoms to find root causes</li>
                 <li>Transform 'gut feeling' decisions into data-driven confidence</li>
@@ -1029,7 +1054,7 @@
                     <div class="service-icon">🤖</div>
                     <h3>The Chatbot Configuration Crisis</h3>
                     <p>Client was losing $300,000+ annually due to a misconfigured chatbot routing system.</p>
-                    <ul class="hero-bullets">
+                    <ul class="case-study-bullets">
                         <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
                         <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
                         <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $300K annually</li>
@@ -1048,7 +1073,7 @@
                     <div class="service-icon">📈</div>
                     <h3>Transformative Reporting Evolution</h3>
                     <p>Client had zero visibility into operational performance - decisions made on gut feeling alone.</p>
-                    <ul class="hero-bullets">
+                    <ul class="case-study-bullets">
                         <li>Challenge: Organization operating blind with no systematic reporting or data analysis capabilities</li>
                         <li>Process: Applied Process Validation Framework - assessed data sources, mapped reporting needs, implemented progressive solution from Excel to ServiceNow to near real-time Power BI dashboards</li>
                         <li>Results: Transformed decision-making from guesswork to data-driven insights, enabled proactive issue identification, reduced response time to operational problems by 75%</li>
@@ -1067,7 +1092,7 @@
                     <div class="service-icon">🧠</div>
                     <h3>From Tribal Knowledge to Structured Repository</h3>
                     <p>Client's critical processes existed only in employees' heads - creating massive risk and inefficiency.</p>
-                    <ul class="hero-bullets">
+                    <ul class="case-study-bullets">
                         <li>Challenge: No documentation, knowledge walking out the door with departing employees, new hires taking months to become productive</li>
                         <li>Process: Applied Process Validation Framework - identified knowledge gaps, interviewed subject matter experts, built templated knowledge repositories with management best practices</li>
                         <li>Results: Reduced new employee onboarding time by 60%, eliminated knowledge loss risk, created searchable process library with 500+ documented procedures</li>
@@ -1086,7 +1111,7 @@
                     <div class="service-icon">🔄</div>
                     <h3>Continuous Improvement Visibility System</h3>
                     <p>Client had improvement initiatives scattered across departments with no oversight or progress tracking.</p>
-                    <ul class="hero-bullets">
+                    <ul class="case-study-bullets">
                         <li>Challenge: Multiple improvement efforts happening in silos, no visibility into ROI or completion status, business reviews based on anecdotal updates</li>
                         <li>Process: Applied Process Validation Framework - mapped existing initiatives, built centralized tracking system with dashboard for real-time visibility into continuous improvement efforts</li>
                         <li>Results: Consolidated 15+ scattered initiatives into unified tracking system, enabled data-driven business reviews, increased project completion rate by 40%</li>
