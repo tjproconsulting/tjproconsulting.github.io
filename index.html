@@ -190,21 +190,30 @@
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 2px;
             cursor: pointer;
             transition: var(--transition);
-            color: var(--white);
-            text-align: center;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            display: flex;
+            align-items: center;
         }
 
-        .logo:hover {
+        .logo img {
+            height: 35px; /* Adjust this to fit your nav bar perfectly */
+            width: auto;
+            max-height: 35px; /* Prevents image from getting too tall */
+            object-fit: contain; /* Maintains aspect ratio */
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
             transform: scale(1.05);
+        }
+
+        /* Responsive logo sizing */
+        @media (max-width: 768px) {
+            .logo img {
+                height: 30px;
+                max-height: 30px;
+            }
         }
 
         /* Hero Section - FIXED ALIGNMENT */
@@ -813,7 +822,7 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/tjproconsulting/sitestuff/refs/heads/main/Logo.png?token=GHSAT0AAAAAADJ6MTXVWLA4QGYJ35RLWTDC2FOSIGA">
+                <img src="https://raw.githubusercontent.com/tjproconsulting/sitestuff/refs/heads/main/Logo.png?token=GHSAT0AAAAAADJ6MTXVWLA4QGYJ35RLWTDC2FOSIGA" alt="ISPS Logo">
             </div>
         </div>
     </nav>
@@ -1027,26 +1036,6 @@
                 }
             }
         });
-
-        // Enhanced polyhedron interaction
-        const polyhedronContainer = document.querySelector('.polyhedron-container');
-        if (polyhedronContainer) {
-            // Add mouse interaction to polyhedron
-            document.addEventListener('mousemove', (e) => {
-                const mouseX = e.clientX / window.innerWidth - 0.5;
-                const mouseY = e.clientY / window.innerHeight - 0.5;
-                
-                const polyhedron = polyhedronContainer.querySelector('.polyhedron');
-                if (polyhedron) {
-                    // Subtle rotation based on mouse position
-                    polyhedron.style.transform = `
-                        rotateX(${mouseY * 10}deg) 
-                        rotateY(${mouseX * 10}deg) 
-                        rotateZ(0deg)
-                    `;
-                }
-            });
-        }
 
         // Add hover effect to portfolio items
         document.querySelectorAll('.portfolio-item').forEach(item => {
