@@ -215,8 +215,8 @@
             position: relative;
             background: var(--primary);
             overflow: hidden;
-            padding-top: 120px;
-            padding-bottom: 60px;
+            padding-top: 160px;
+            padding-bottom: 120px;
         }
 
         .hero-bg {
@@ -292,7 +292,6 @@
             font-weight: bold;
             font-size: 1.2rem;
         }
-
 
         .hero-bullets li {
             color: rgba(255, 255, 255, 0.9);
@@ -810,31 +809,36 @@
             text-align: center;
         }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .footer-heading {
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
             margin-bottom: 20px;
         }
 
-        .social-links a {
-            width: 40px;
-            height: 40px;
+        .social-links {
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 25px;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .social-links a:hover {
             background: var(--accent);
             color: var(--primary);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
@@ -884,6 +888,7 @@
             }
 
             .hero {
+                min-height: 100vh;
                 padding-top: 120px;
                 padding-bottom: 100px;
             }
@@ -944,7 +949,7 @@
             }
 
             .hero {
-                padding-top: 120px;
+                padding-top: 140px;
                 padding-bottom: 100px;
             }
             
@@ -994,7 +999,7 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <h1>Business Intelligence & Process Optimization Strategist</h1>
-            <p>Strategic advisor who leverages years of frontline operational experience to spot inefficiencies others miss, transforming operational chaos into automated efficiency through investigative data analysis.</p>
+            <p>Strategic advisor who transforms operational chaos into automated efficiency through investigative data analysis.</p>
             <ul class="hero-bullets">
                 <li>Investigate beyond symptoms to find root causes</li>
                 <li>Transform 'gut feeling' decisions into data-driven confidence</li>
@@ -1161,9 +1166,9 @@
     <footer>
         <div class="footer-heading">Let's connect:</div>
         <div class="social-links">
-            <a href="" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="" target="_blank" rel="noopener noreferrer">Fiverr</a>
-            <a href="" target="_blank" rel="noopener noreferrer">Upwork</a>
+            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://fiverr.com/your-username" target="_blank" rel="noopener noreferrer">Fiverr</a>
+            <a href="https://upwork.com/freelancers/your-profile" target="_blank" rel="noopener noreferrer">Upwork</a>
         </div>
         <p>&copy; 2025 TJ Pro Consulting. All rights reserved.</p>
     </footer>
@@ -1219,36 +1224,36 @@
         });
 
         // Form submission
-      //  function handleSubmit(event) {
-        //    event.preventDefault();
+        function handleSubmit(event) {
+            event.preventDefault();
             
             // Get form values
-          //  const name = document.querySelector('input[placeholder="Your Name"]').value;
-           // const email = document.querySelector('input[placeholder="Your Email"]').value;
-            //const message = document.querySelector('textarea').value;
+            const name = document.querySelector('input[placeholder="Your Name"]').value;
+            const email = document.querySelector('input[placeholder="Your Email"]').value;
+            const message = document.querySelector('textarea').value;
             
             // Create Google Form URL with pre-filled data
-            // You'll need to replace 'YOUR_FORM_ID' and the entry IDs with your actual Google Form details
-            //const baseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc4igOLOQcpRlcGo9pWUibNtSXOJnfrfoZKg7dIRidaL1Gbcg/viewform?usp=pp_url';
-            //const params = new URLSearchParams({
-              //  'entry.NAME_FIELD_ID': Name,
-                //'entry.EMAIL_FIELD_ID': Email,
-                //'entry.MESSAGE_FIELD_ID': BusinessProblem
+            // Replace 'YOUR_SHORTENED_LINK' with your actual shortened Google Form URL
+            const baseUrl = 'YOUR_SHORTENED_LINK';
+            const params = new URLSearchParams({
+                'entry.NAME_FIELD_ID': name,
+                'entry.EMAIL_FIELD_ID': email,
+                'entry.MESSAGE_FIELD_ID': message
             });
             
-            //const googleFormUrl = `${baseUrl}?${params.toString()}`;
+            const googleFormUrl = `${baseUrl}?${params.toString()}`;
             
             // Open Google Form in new tab
-           // window.open(googleFormUrl, '_blank');
+            window.open(googleFormUrl, '_blank');
             
             // Reset form
-            //document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(field => {
-              //  field.value = '';
+            document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(field => {
+                field.value = '';
             });
             
             // Show confirmation message
-            //alert('Opening form to complete your submission...');
-        //}
+            alert('Opening form to complete your submission...');
+        }
 
         // Parallax effect for hero section (subtle)
         window.addEventListener('scroll', () => {
