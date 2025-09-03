@@ -581,7 +581,7 @@
             padding: 30px;
             border-radius: 20px;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             max-height: 80vh;
             overflow-y: auto;
             position: relative;
@@ -616,6 +616,7 @@
             height: auto;
             border-radius: 10px;
             margin-bottom: 20px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         .modal p {
@@ -624,6 +625,36 @@
             margin-bottom: 15px;
         }
 
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .modal-image-item {
+            text-align: center;
+        }
+
+        .modal-image-item h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .modal-image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition);
+        }
+
+        .modal-image-item img:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+        }
         /* Portfolio Section */
         .portfolio {
             padding: 100px 50px;
@@ -1062,7 +1093,7 @@
                     <ul class="case-study-bullets">
                         <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
                         <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
-                        <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $300K annually</li>
+                        <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $208K annually</li>
                         <li>Key Insight: Most organizations implement new systems without validating the end-to-end process flow</li>
                     </ul>
                 </div>
@@ -1077,7 +1108,7 @@
                         <li>Key Insight: Organizations without reporting systems can't identify problems until they become crises</li>
                     </ul>
                     <div class="case-study-links">
-                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                        <a href="#" class="case-study-link" onclick="openModal('reportingModal')">
                             📊 Samples
                         </a>
                     </div>
@@ -1104,7 +1135,7 @@
                         <li>Key Insight: You can't manage what you can't measure - especially improvement initiatives</li>
                     </ul>
                     <div class="case-study-links">
-                        <a href="#" class="case-study-link" onclick="openModal('modal1')">
+                        <a href="#" class="case-study-link" onclick="openModal('improvementModal')">
                             📊 Samples
                         </a>
                     </div>
@@ -1112,6 +1143,79 @@
             </div>
         </div>
     </section>
+
+    <!-- Modals -->
+    <div id="reportingModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('reportingModal')">&times;</span>
+            <h3>Reporting & Dashboard Samples</h3>
+            <p>Examples of transformative reporting solutions that turned data-blind organizations into data-driven decision makers.</p>
+            
+            <div class="modal-images">
+                <div class="modal-image-item">
+                    <h4>ServiceNow Analytics Dashboard</h4>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="ServiceNow Dashboard Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Power BI Executive Overview</h4>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Power BI Dashboard Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Real-time Operations Monitor</h4>
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=300&fit=crop" alt="Real-time Dashboard Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Automated Reporting System</h4>
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&h=300&fit=crop" alt="Automated Reports Sample">
+                </div>
+            </div>
+            
+            <p><strong>Key Features:</strong></p>
+            <ul style="color: var(--accent); margin-left: 20px; line-height: 1.8;">
+                <li>Progressive implementation from Excel → ServiceNow → Power BI</li>
+                <li>Real-time operational visibility with automated alerts</li>
+                <li>Executive dashboards with drill-down capabilities</li>
+                <li>Automated report generation and distribution</li>
+                <li>Performance trending and predictive analytics</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="improvementModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal('improvementModal')">&times;</span>
+            <h3>Continuous Improvement Tracking Systems</h3>
+            <p>Centralized systems that transformed scattered improvement initiatives into managed, measurable programs.</p>
+            
+            <div class="modal-images">
+                <div class="modal-image-item">
+                    <h4>Initiative Portfolio Dashboard</h4>
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop" alt="Initiative Dashboard Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>ROI Tracking & Analytics</h4>
+                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=300&fit=crop" alt="ROI Analytics Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Progress Monitoring System</h4>
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop" alt="Progress Monitoring Sample">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Executive Business Review</h4>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" alt="Business Review Sample">
+                </div>
+            </div>
+            
+            <p><strong>System Benefits:</strong></p>
+            <ul style="color: var(--accent); margin-left: 20px; line-height: 1.8;">
+                <li>Consolidated 15+ scattered initiatives into unified tracking</li>
+                <li>Real-time visibility into project status and ROI</li>
+                <li>Automated progress reporting and stakeholder updates</li>
+                <li>Data-driven business review meetings</li>
+                <li>40% increase in project completion rates</li>
+            </ul>
+        </div>
+    </div>
     
     <!-- Contact Section -->
     <section class="contact" id="contact">
