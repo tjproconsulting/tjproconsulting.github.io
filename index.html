@@ -3,8 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligent Strategic Process Solutions</title>
+    <title>Modal Lightbox Solution</title>
     <style>
+        /* Add these new styles to your existing CSS */
+        
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 20000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: var(--accent);
+            font-size: 36px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            background: rgba(0, 0, 0, 0.7);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            color: var(--white);
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--accent);
+            border: none;
+            font-size: 24px;
+            padding: 15px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: -80px;
+        }
+
+        .lightbox-next {
+            right: -80px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Make modal images clickable */
+        .modal-image-item img {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-image-item img:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Add a subtle overlay hint */
+        .modal-image-item {
+            position: relative;
+        }
+
+        .modal-image-item::after {
+            content: '🔍';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--accent);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .modal-image-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .lightbox-close {
+                top: -40px;
+                font-size: 28px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .lightbox-nav {
+                font-size: 20px;
+                padding: 10px 15px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .lightbox-prev {
+                left: -60px;
+            }
+
+            .lightbox-next {
+                right: -60px;
+            }
+
+            .lightbox-caption {
+                bottom: -50px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+            }
+
+            .lightbox-caption {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                background: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+                border-radius: 5px;
+            }
+        }
+
+        /* Your existing styles remain the same */
         * {
             margin: 0;
             padding: 0;
@@ -25,538 +225,11 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: var(--primary);
-            overflow-x: hidden;
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background: var(--primary);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s, visibility 0.5s;
-            overflow: hidden;
+            padding: 20px;
         }
 
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-content {
-            text-align: center;
-            color: var(--accent);
-            width: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .loader-words {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 300;
-            letter-spacing: 2px;
-            line-height: 1.2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding: 0 20px;
-            color: var(--accent);
-            position: absolute;
-        }
-
-        .loader-word {
-            opacity: 0;
-            transform: translateY(100vh);
-            animation: ascendAndStay 1.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-            color: var(--accent);
-        }
-
-        .loader-word:nth-child(1) { animation-delay: 0s; }
-        .loader-word:nth-child(2) { animation-delay: 1.5s; }
-        .loader-word:nth-child(3) { animation-delay: 3s; }
-        .loader-word:nth-child(4) { animation-delay: 4.5s; }
-
-        @keyframes ascendAndStay {
-            0% {
-                opacity: 0;
-                transform: translateY(100vh);
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .loader-words {
-            animation: fadeOutWords 0.5s ease-out 6s forwards;
-        }
-
-        @keyframes fadeOutWords {
-            to {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-        }
-
-        .loader-reveal-container {
-            position: absolute;
-            width: 100%;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .loader-bar {
-            position: absolute;
-            height: 2px;
-            width: 100%;
-            background: var(--accent);
-            transform: translateX(-100%);
-            animation: sweepRight 1s cubic-bezier(0.65, 0, 0.35, 1) 6.8s forwards;
-        }
-
-        @keyframes sweepRight {
-            0% { transform: translateX(-100%); }
-            50% { transform: translateX(0); }
-            100% { transform: translateX(100%); }
-        }
-
-        .loader-name {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            color: var(--white);
-            opacity: 0;
-            transform: scale(0.9);
-            animation: revealName 0.8s cubic-bezier(0.65, 0, 0.35, 1) 7.3s forwards;
-        }
-
-        @keyframes revealName {
-            0% {
-                opacity: 0;
-                transform: scale(0.9);
-                filter: blur(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                filter: blur(0);
-            }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            transition: var(--transition);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.98);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            position: relative;
-        }
-
-        .logo {
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 35px;
-            width: auto;
-            max-height: 35px;
-            object-fit: contain;
-            transition: var(--transition);
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: var(--primary);
-            overflow: hidden;
-            padding-top: 160px;
-            padding-bottom: 120px;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 35px, var(--accent) 35px, var(--accent) 36px);
-            animation: slide 20s linear infinite;
-        }
-
-        @keyframes slide {
-            to { transform: translateX(70px); }
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 50px;
-            z-index: 10;
-            color: white;
-            position: relative;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-            color: var(--white);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.2s both;
-            color: var(--accent);
-        }
-
-        .hero-bullets {
-            list-style: none;
-            margin: 0 0 40px 0;
-            padding: 0;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .case-study-bullets {
-            list-style: none;
-            margin: 20px 0 40px 0;
-            padding: 0;
-        }
-
-        .case-study-bullets li {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .case-study-bullets li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .hero-bullets li {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.5;
-        }
-
-        .hero-bullets li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            animation: fadeInUp 1s ease 0.5s both;
-        }
-
-        .btn {
-            padding: 15px 40px;
-            border: none;
-            background: var(--gold-gradient);
-            color: var(--primary);
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-outline:hover {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        /* Section spacing fix */
-        section {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 50px;
-            background: var(--primary);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-            color: var(--white);
-        }
-
-        .section-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--gold-gradient);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .about-text p {
-            color: var(--accent);
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-image {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            transform: rotate(-2deg);
-            transition: var(--transition);
-        }
-
-        .about-image:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 50px;
-            background: var(--primary);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .service-card {
-            background: rgba(212, 175, 55, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
-            background: rgba(212, 175, 55, 0.08);
-        }
-
-        .service-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: var(--gold-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover:before {
-            transform: scaleX(1);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gold-gradient);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: var(--primary);
-            position: relative;
-        }
-
-        .service-icon::after {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 15px;
-            padding: 2px;
-            background: var(--gold-gradient);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .service-card:hover .service-icon::after {
-            opacity: 1;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--white);
-        }
-
-        .service-card p {
-            color: var(--accent);
-            line-height: 1.8;
-        }
-
-        .case-study-links {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .case-study-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            padding: 8px 15px;
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 20px;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .case-study-link:hover {
-            background: rgba(212, 175, 55, 0.2);
-            transform: translateY(-2px);
-        }
-
-        /* Modal Styles */
+        /* Modal styles (simplified for demo) */
         .modal {
             display: none;
             position: fixed;
@@ -610,15 +283,6 @@
             font-size: 1.8rem;
         }
 
-        .modal img {
-            width: 100%;
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(212, 175, 55, 0.3);
-        }
-
         .modal p {
             color: var(--accent);
             line-height: 1.6;
@@ -634,6 +298,7 @@
 
         .modal-image-item {
             text-align: center;
+            position: relative;
         }
 
         .modal-image-item h4 {
@@ -648,613 +313,92 @@
             object-fit: cover;
             border-radius: 10px;
             border: 2px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
             transition: var(--transition);
         }
 
         .modal-image-item img:hover {
             transform: scale(1.02);
             border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
-        /* Portfolio Section */
-        .portfolio {
-            padding: 100px 50px;
-            background: var(--primary);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            min-height: 300px;
-            aspect-ratio: 1.2 / 1;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h3 {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .portfolio-overlay p {
-            color: rgba(255, 255, 255, 0.8);
-            transform: translateY(20px);
-            transition: var(--transition) 0.1s;
-        }
-
-        .portfolio-item:hover .portfolio-overlay h3,
-        .portfolio-item:hover .portfolio-overlay p {
-            transform: translateY(0);
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 100px 50px;
-            background: var(--primary);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(212, 175, 55, 0.05) 100px, rgba(212, 175, 55, 0.05) 200px);
-            pointer-events: none;
-        }
-
-        .contact .section-header h2 {
-            color: var(--accent);
-        }
-
-        .contact .section-header h2:after {
-            background: var(--accent);
-        }
-
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--white);
-        }
-
-        .contact-info p {
-            opacity: 0.9;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: var(--accent);
-        }
-
-        .contact-details {
-            list-style: none;
-            color: var(--accent);
-        }
-
-        .contact-details li {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .contact-form {
-            background: rgba(212, 175, 55, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            color: white;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(212, 175, 55, 0.5);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background: rgba(212, 175, 55, 0.1);
-            border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            padding: 30px 50px;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-        }
-
-        .footer-heading {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 25px;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .social-links a:hover {
-            background: var(--accent);
+        .btn {
+            padding: 15px 30px;
+            background: var(--gold-gradient);
             color: var(--primary);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 10px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .loader-words {
-                font-size: clamp(1.2rem, 3.5vw, 2.5rem);
-                gap: 12px;
-            }
-            
-            .loader-name {
-                font-size: clamp(1.5rem, 4vw, 2.5rem);
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 10px 20px;
-            }
-
-            .logo img {
-                height: 25px;
-                max-height: 25px;
-            }
-
-            .hero {
-                min-height: 100vh;
-                padding-top: 120px;
-                padding-bottom: 100px;
-            }
-
-            .hero-content {
-                padding: 0 20px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .about-grid,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                padding: 0 20px;
-                max-width: 100%;
-            }
-
-            .portfolio-item {
-                min-height: 250px;
-                aspect-ratio: 1.5 / 1;
-                width: 100%;
-                margin: 0 auto;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .loader-words {
-                font-size: clamp(1rem, 3vw, 2rem);
-                gap: 10px;
-            }
-            
-            .loader-name {
-                font-size: clamp(1.2rem, 3.5vw, 2rem);
-                letter-spacing: 5px;
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-                max-height: 90vh;
-            }
-
-            .modal-images {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 8px 15px;
-            }
-
-            .logo img {
-                height: 22px;
-                max-height: 22px;
-            }
-
-            .hero {
-                padding-top: 140px;
-                padding-bottom: 100px;
-            }
-            
-            .hero-content {
-                padding: 0 15px;
-            }
-
-            .portfolio-grid {
-                padding: 0 15px;
-            }
-            
-            .portfolio-item {
-                min-height: 200px;
-                aspect-ratio: 1.8 / 1;
-            }
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
     </style>
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-words">
-                <div class="loader-word">INTELLIGENT</div>
-                <div class="loader-word">STRATEGIC</div>
-                <div class="loader-word">PROCESS</div>
-                <div class="loader-word">SOLUTIONS</div>
-            </div>
-            <div class="loader-reveal-container">
-                <div class="loader-bar"></div>
-                <div class="loader-name" data-text="Strategic Business Consulting">Strategic Business Consulting</div>
-            </div>
-        </div>
-    </div>
+    <!-- Demo Modal -->
+    <button class="btn" onclick="openModal('reportingModal')">Open Sample Modal</button>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/DarkLogo.png" alt="ISPS Logo">
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1>Business Intelligence & Process Optimization Strategist</h1>
-            <p>Strategic advisor who leverages years of frontline operational experience to spot inefficiencies others miss, transforming operational chaos into automated efficiency through investigative data analysis.</p>
-            <ul class="hero-bullets">
-                <li>Investigate beyond symptoms to find root causes</li>
-                <li>Transform 'gut feeling' decisions into data-driven confidence</li>
-                <li>7+ years frontline operational experience + analytical expertise</li>
-                <li>Proven track record: ServiceNow → Power BI transformations, process optimizations</li>
-            </ul>
-        </div>
-    </section>
-    
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Proven Solutions That Work</h2>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item fade-in">
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/Problem%20Solving.png" alt="Project 1">
-                    <div class="portfolio-overlay">
-                        <h3>Business Problem Investigation</h3>
-                        <p>Investigate operational pain points to find real root causes.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Project 2">
-                    <div class="portfolio-overlay">
-                        <h3>Strategic Data & Reporting</h3>
-                        <p>Transform data-blind organizations into data-driven decision makers.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in">
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/Automation.png" alt="Project 3">
-                    <div class="portfolio-overlay">
-                        <h3>Process Automation & Optimization</h3>
-                        <p>Eliminate work that shouldn't exist through systematic automation.</p>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in">
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/Operational%20Intelligence.png" alt="Project 4">
-                    <div class="portfolio-overlay">
-                        <h3>Operational Intelligence Systems</h3>
-                        <p>Build early warning systems so you see problems before they become expensive.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Case Studies Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Case Studies</h2>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🤖</div>
-                    <h3>The Chatbot Configuration Crisis</h3>
-                    <p>Client was losing $300,000+ annually due to a misconfigured chatbot routing system.</p>
-                    <ul class="case-study-bullets">
-                        <li>Challenge: New chatbot implementation caused surge in tier 1 tickets that shouldn't have been created</li>
-                        <li>Process: Applied Process Validation Framework - noticed timing correlation, mapped intended vs actual workflow, tested scenarios</li>
-                        <li>Results: Fixed configuration, eliminated unnecessary ticket volume, saved $208K annually</li>
-                        <li>Key Insight: Most organizations implement new systems without validating the end-to-end process flow</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📈</div>
-                    <h3>Transformative Reporting Evolution</h3>
-                    <p>Client had zero visibility into operational performance - decisions made on gut feeling alone.</p>
-                    <ul class="case-study-bullets">
-                        <li>Challenge: Organization operating blind with no systematic reporting or data analysis capabilities</li>
-                        <li>Process: Applied Process Validation Framework - assessed data sources, mapped reporting needs, implemented progressive solution from Excel to ServiceNow to near real-time Power BI dashboards</li>
-                        <li>Results: Transformed decision-making from guesswork to data-driven insights, enabled proactive issue identification, reduced response time to operational problems by 75%</li>
-                        <li>Key Insight: Organizations without reporting systems can't identify problems until they become crises</li>
-                    </ul>
-                    <div class="case-study-links">
-                        <a href="#" class="case-study-link" onclick="openModal('reportingModal')">
-                            📊 Samples
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🧠</div>
-                    <h3>From Tribal Knowledge to Structured Repository</h3>
-                    <p>Client's critical processes existed only in employees' heads - creating massive risk and inefficiency.</p>
-                    <ul class="case-study-bullets">
-                        <li>Challenge: No documentation, knowledge walking out the door with departing employees, new hires taking months to become productive</li>
-                        <li>Process: Applied Process Validation Framework - identified knowledge gaps, interviewed subject matter experts, built templated knowledge repositories with management best practices</li>
-                        <li>Results: Reduced new employee onboarding time by 60%, eliminated knowledge loss risk, created searchable process library with 500+ documented procedures</li>
-                        <li>Key Insight: Undocumented processes are unsustainable processes - and expensive ones</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔄</div>
-                    <h3>Continuous Improvement Visibility System</h3>
-                    <p>Client had improvement initiatives scattered across departments with no oversight or progress tracking.</p>
-                    <ul class="case-study-bullets">
-                        <li>Challenge: Multiple improvement efforts happening in silos, no visibility into ROI or completion status, business reviews based on anecdotal updates</li>
-                        <li>Process: Applied Process Validation Framework - mapped existing initiatives, built centralized tracking system with dashboard for real-time visibility into continuous improvement efforts</li>
-                        <li>Results: Consolidated 15+ scattered initiatives into unified tracking system, enabled data-driven business reviews, increased project completion rate by 40%</li>
-                        <li>Key Insight: You can't manage what you can't measure - especially improvement initiatives</li>
-                    </ul>
-                    <div class="case-study-links">
-                        <a href="#" class="case-study-link" onclick="openModal('improvementModal')">
-                            📊 Samples
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modals -->
+    <!-- Sample Modal -->
     <div id="reportingModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal('reportingModal')">&times;</span>
             <h3>Reporting & Dashboard Samples</h3>
-            <p>Examples of transformative reporting solutions that turned data-blind organizations into data-driven decision makers.</p>
+            <p>Examples of transformative reporting solutions. Click any image to view it in full size.</p>
             
             <div class="modal-images">
                 <div class="modal-image-item">
-                    <h4>Live Chat Reporting</h4>
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/Chat.png?w=400&h=300&fit=crop" alt="ServiceNow Dashboard Sample">
+                    <h4>ServiceNow Analytics Dashboard</h4>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1500&h=800&fit=crop" 
+                         alt="ServiceNow Dashboard Sample"
+                         onclick="openLightbox(this, 'ServiceNow Analytics Dashboard')">
                 </div>
                 <div class="modal-image-item">
-                    <h4>SLA Tracking</h4>
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/SLA.png?w=400&h=300&fit=crop" alt="Power BI Dashboard Sample">
+                    <h4>Power BI Executive Overview</h4>
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1500&h=800&fit=crop" 
+                         alt="Power BI Dashboard Sample"
+                         onclick="openLightbox(this, 'Power BI Executive Overview')">
                 </div>
                 <div class="modal-image-item">
-                    <h4>Forecasting</h4>
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/Metrics.png?w=400&h=300&fit=crop" alt="Real-time Dashboard Sample">
+                    <h4>Real-time Operations Monitor</h4>
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1500&h=800&fit=crop" 
+                         alt="Real-time Dashboard Sample"
+                         onclick="openLightbox(this, 'Real-time Operations Monitor')">
+                </div>
+                <div class="modal-image-item">
+                    <h4>Automated Reporting System</h4>
+                    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1500&h=800&fit=crop" 
+                         alt="Automated Reports Sample"
+                         onclick="openLightbox(this, 'Automated Reporting System')">
                 </div>
             </div>
-            
-            <p><strong>Key Features:</strong></p>
-            <ul style="color: var(--accent); margin-left: 20px; line-height: 1.8;">
-                <li>Progressive implementation from Excel → ServiceNow → Power BI</li>
-                <li>Real-time operational visibility</li>
-                <li>Executive dashboards with drill-down capabilities</li>
-                <li>Performance trending and predictive analytics</li>
-            </ul>
         </div>
     </div>
 
-    <div id="improvementModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal('improvementModal')">&times;</span>
-            <h3>Continuous Improvement Tracking Systems</h3>
-            <p>Centralized systems that transformed scattered improvement initiatives into managed, measurable programs.</p>
-            
-            <div class="modal-images">
-                <div class="modal-image-item">
-                    <h4>Initiative Portfolio Dashboard</h4>
-                    <img src="https://raw.githubusercontent.com/tjproconsulting/tjproconsulting.github.io/refs/heads/main/CI%20Dash.png?w=800&h=800&fit=scale" alt="Initiative Dashboard Sample">
-                </div>
-            </div>
-            
-            <p><strong>System Benefits:</strong></p>
-            <ul style="color: var(--accent); margin-left: 20px; line-height: 1.8;">
-                <li>Consolidated scattered initiatives into unified tracking</li>
-                <li>Real-time visibility into project status and ROI</li>
-                <li>Automated progress reporting and stakeholder updates</li>
-                <li>Data-driven business review meetings</li>
-            </ul>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">&#10094;</button>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+            <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">&#10095;</button>
+            <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
-    
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header fade-in">
-                <h2>Get Results</h2>
-            </div>
-            <div class="contact-content fade-in">
-                <div class="contact-info">
-                    <h3>Why My Approach Works Differently</h3>
-                    <p>Most consultants start with solutions. I start with investigation. I combine operational experience with analytical expertise to find root causes, then build systematic solutions that actually work.</p>
-                </div>
-                <div class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Tell us about your challenges. What operational challenge is frustrating you most? What have you tried that didn't work?" required></textarea>
-                    </div>
-                    <button class="btn" onclick="handleSubmit(event)">Get Strategic Assessment</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-heading">Let's connect:</div>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/taylor-huebschwerlen-086022109" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="" rel="noopener noreferrer">Fiverr</a>
-            <a href="https://upwork.com/freelancers/~01e851f9962adc7d32" target="_blank" rel="noopener noreferrer">Upwork</a>
-        </div>
-        <p>&copy; 2025 TJ Pro Consulting. All rights reserved.</p>
-    </footer>
 
     <script>
-        // Modal Functions
+        // Existing modal functions
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -1262,9 +406,77 @@
             const modal = document.getElementById(modalId);
             if (modal) {
                 modal.classList.remove('active');
-                document.body.style.overflow = 'auto'; // Restore scrolling
+                document.body.style.overflow = 'auto';
             }
         }
+
+        // Lightbox functionality
+        let currentImageIndex = 0;
+        let currentImages = [];
+
+        function openLightbox(imgElement, caption) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            
+            // Get all images in the current modal
+            const modalContent = imgElement.closest('.modal-content');
+            currentImages = Array.from(modalContent.querySelectorAll('.modal-image-item img'));
+            currentImageIndex = currentImages.indexOf(imgElement);
+            
+            // Set the image and caption
+            lightboxImage.src = imgElement.src;
+            lightboxImage.alt = imgElement.alt;
+            lightboxCaption.textContent = caption;
+            
+            // Show lightbox
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function navigateLightbox(direction) {
+            currentImageIndex += direction;
+            
+            // Wrap around if at the ends
+            if (currentImageIndex >= currentImages.length) {
+                currentImageIndex = 0;
+            } else if (currentImageIndex < 0) {
+                currentImageIndex = currentImages.length - 1;
+            }
+            
+            const currentImg = currentImages[currentImageIndex];
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxCaption = document.getElementById('lightboxCaption');
+            
+            // Update image and caption
+            lightboxImage.src = currentImg.src;
+            lightboxImage.alt = currentImg.alt;
+            lightboxCaption.textContent = currentImg.closest('.modal-image-item').querySelector('h4').textContent;
+        }
+
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            } else if (event.key === 'ArrowLeft') {
+                navigateLightbox(-1);
+            } else if (event.key === 'ArrowRight') {
+                navigateLightbox(1);
+            }
+        });
 
         // Close modal when clicking outside of it
         window.addEventListener('click', function(event) {
@@ -1275,131 +487,6 @@
                     document.body.style.overflow = 'auto';
                 }
             });
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const activeModal = document.querySelector('.modal.active');
-                if (activeModal) {
-                    activeModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        });
-
-        // Loader
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loader').classList.add('hidden');
-            }, 9500); // Total time for complete animation sequence
-        });
-
-        // Navigation scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (navbar && window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else if (navbar) {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            // Get form values
-            const name = document.querySelector('input[placeholder="Your Name"]').value;
-            const email = document.querySelector('input[placeholder="Your Email"]').value;
-            const message = document.querySelector('textarea').value;
-            
-            // Create Google Form URL with pre-filled data
-            // Replace 'YOUR_SHORTENED_LINK' with your actual shortened Google Form URL
-            const baseUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSc4igOLOQcpRlcGo9pWUibNtSXOJnfrfoZKg7dIRidaL1Gbcg/viewform?usp=pp_url';
-            const params = new URLSearchParams({
-                'entry.2005620554': name,
-                'entry.1045781291': email,
-                'entry.839337160': message
-            });
-            
-            const googleFormUrl = `${baseUrl}?${params.toString()}`;
-            
-            // Open Google Form in new tab
-            window.open(googleFormUrl, '_blank');
-            
-            // Reset form
-            document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(field => {
-                field.value = '';
-            });
-            
-            // Show confirmation message
-            alert('Opening your personalized consultation request. Please review and submit the pre-filled information to complete your inquiry.');
-        }
-
-        // Parallax effect for hero section (subtle)
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            const polyhedron = document.querySelector('.polyhedron-container');
-            
-            if (hero && scrolled < window.innerHeight) {
-                // Subtle parallax for hero background
-                hero.querySelector('.hero-bg').style.transform = `translateY(${scrolled * 0.5}px)`;
-                
-                // Move polyhedron slightly with scroll
-                if (polyhedron) {
-                    polyhedron.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.2}px)`;
-                }
-            }
-        });
-
-        // Add hover effect to portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.02)';
-            });
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // Add staggered animation to service cards
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach((card, index) => {
-            card.style.animationDelay = `${index * 0.1}s`;
         });
     </script>
 </body>
