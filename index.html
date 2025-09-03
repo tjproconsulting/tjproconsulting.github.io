@@ -655,6 +655,7 @@
             transform: scale(1.02);
             border-color: var(--accent);
         }
+
         /* Portfolio Section */
         .portfolio {
             padding: 100px 50px;
@@ -967,6 +968,16 @@
                 font-size: clamp(1.2rem, 3.5vw, 2rem);
                 letter-spacing: 5px;
             }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                max-height: 90vh;
+            }
+
+            .modal-images {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1256,6 +1267,45 @@
     </footer>
 
     <script>
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            }
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+
+        // Close modal when clicking outside of it
+        window.addEventListener('click', function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    activeModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
         // Loader
         window.addEventListener('load', () => {
             setTimeout(() => {
