@@ -660,6 +660,173 @@
             transform: translateY(-2px);
         }
 
+        /* Small Business Consulting Section */
+        .small-business-section {
+            padding: 100px 50px;
+            background: var(--primary);
+            border-top: 2px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .consulting-intro {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .consulting-intro h2 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .consulting-intro h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gold-gradient);
+        }
+
+        .consulting-intro .subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .consulting-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--accent);
+        }
+
+        .consulting-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .consulting-service-card {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition);
+        }
+
+        .consulting-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.08);
+            border-color: var(--accent);
+        }
+
+        .consulting-service-card h3 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .consulting-service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .consulting-service-card li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--accent);
+            line-height: 1.6;
+        }
+
+        .consulting-service-card li::before {
+            content: '✓';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .ideal-for {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            margin-top: 50px;
+        }
+
+        .ideal-for h3 {
+            color: var(--white);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .ideal-for ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 0;
+        }
+
+        .ideal-for li {
+            padding: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .ideal-for li::before {
+            content: '▸';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .cta-box {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid var(--accent);
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .cta-box h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-box p {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .cta-box .price-note {
+            font-size: 1rem;
+            color: rgba(212, 175, 55, 0.7);
+            font-style: italic;
+            margin-top: 15px;
+        }
+
         /* Modal Styles */
         .modal {
             display: none;
@@ -1225,6 +1392,10 @@
                 <li>7+ years frontline operational experience + analytical expertise</li>
                 <li>Proven track record: ServiceNow → Power BI transformations, process optimizations</li>
             </ul>
+            <div class="hero-buttons">
+                <a href="#services" class="hero-btn">Technical Solutions</a>
+                <a href="#small-business" class="hero-btn">Business Consulting</a>
+            </div>
         </div>
     </section>
     
@@ -1263,6 +1434,62 @@
                         <p>Build early warning systems so you see problems before they become expensive.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Small Business Consulting Section -->
+    <section class="small-business-section" id="small-business">
+        <div class="container">
+            <div class="consulting-intro fade-in">
+                <h2>Small Business Consulting</h2>
+                <p class="subtitle">Not sure where to start improving your business?</p>
+                <p>Leveraging analytical expertise and systematic research methodologies, I help small businesses transform operational uncertainties into actionable strategies. Whether analyzing complex data sets, interpreting performance metrics, or investigating fundamental business questions, I provide clear, evidence-based recommendations. My approach focuses on uncovering root causes and identifying improvement opportunities across competitive positioning, operational efficiency, and customer experience optimization.</p>
+            </div>
+
+            <div class="consulting-services-grid">
+                <div class="consulting-service-card fade-in">
+                    <h3>Competitive Intelligence & Market Research</h3>
+                    <ul>
+                        <li>Competitor pricing analysis</li>
+                        <li>Service offering comparisons</li>
+                        <li>Market positioning research</li>
+                        <li>Local competitor landscape mapping</li>
+                        <li>Industry benchmark research</li>
+                        <li>Competitive advantage identification</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-service-card fade-in">
+                    <h3>Business Operations & Data Analysis</h3>
+                    <ul>
+                        <li>Process bottleneck identification</li>
+                        <li>Customer journey mapping</li>
+                        <li>Operational efficiency analysis</li>
+                        <li>Data-driven decision support</li>
+                        <li>Business problem diagnosis</li>
+                        <li>Performance metrics interpretation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="ideal-for fade-in">
+                <h3>Ideal For</h3>
+                <ul>
+                    <li>Service-Based Businesses</li>
+                    <li>Healthcare & Wellness Providers</li>
+                    <li>Professional Services Firms</li>
+                    <li>Local Retail & Specialty Stores</li>
+                    <li>Small to Medium Enterprises (1-50 employees)</li>
+                    <li>Calgary & Alberta Business Owners</li>
+                </ul>
+            </div>
+
+            <div class="cta-box fade-in">
+                <h3>Let's Figure Out What's Really Going On</h3>
+                <p>I offer a <strong>free initial discovery consultation</strong> where we'll discuss your business challenges and questions. After our conversation, you'll receive a complementary assessment document outlining what I found and recommended next steps—no commitment required.</p>
+                <p>From there, we can discuss how to move forward based on what makes sense for your business and budget.</p>
+                <p class="price-note">Consulting rates: $75-125/hour depending on project scope and complexity</p>
             </div>
         </div>
     </section>
